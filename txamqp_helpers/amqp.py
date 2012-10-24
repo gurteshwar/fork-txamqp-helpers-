@@ -112,7 +112,7 @@ class AmqpProtocol(AMQClient):
         yield self.chan.queue_bind(queue=queue, exchange=exchange, routing_key=routing_key)
 
         # Consume.
-        yield self.chan.basic_consume(queue=queue, no_ack=False, consumer_tag=consumer_tag)
+        yield self.chan.basic_consume(queue=queue, no_ack=True, consumer_tag=consumer_tag)
         queue = yield self.queue(consumer_tag)
 
         # Now setup the readers.
